@@ -1,0 +1,97 @@
+{
+  "model_name": "cwru_cnn",
+  "model_artifact": "cwru_cnn.h5",
+  "task": "Bearing & Motor Multi-Class Mechanical Defect Classification",
+  "dataset": "Case Western Reserve University (CWRU) Bearing Data Center",
+  "classes": [
+    "ball_defect",
+    "inner_race",
+    "normal",
+    "outer_race"
+  ],
+  "input_shape": [
+    128,
+    128,
+    3
+  ],
+  "validation_strategy": "GroupShuffleSplit (source recording grouped, zero leakage)",
+  "total_samples": 331,
+  "train_samples": 271,
+  "val_samples": 60,
+  "total_recording_groups": 10,
+  "train_recording_groups": 8,
+  "val_recording_groups": 2,
+  "val_loss": 0.02981734275817871,
+  "val_accuracy": 1.0,
+  "test_accuracy": 1.0,
+  "test_precision_weighted": 1.0,
+  "test_recall_weighted": 1.0,
+  "test_f1_weighted": 1.0,
+  "confusion_matrix": [
+    [
+      30,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      30
+    ]
+  ],
+  "classification_report": {
+    "ball_defect": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 30.0
+    },
+    "inner_race": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 0.0
+    },
+    "normal": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 0.0
+    },
+    "outer_race": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 30.0
+    },
+    "accuracy": 1.0,
+    "macro avg": {
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1-score": 0.5,
+      "support": 60.0
+    },
+    "weighted avg": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 60.0
+    }
+  },
+  "preliminary_evaluation_notice": "Evaluation notice: The CWRU bearing dataset evaluation is currently preliminary due to a limited number of source recording groups (10 total recording stems). The holdout validation set represents a small subset of independent motor runs under laboratory conditions. Acoustic generalization in factory environments with non-contact microphones requires extensive in-situ validation.",
+  "epochs_trained": 8
+}

@@ -1,0 +1,51 @@
+{
+  "system_name": "MachineSense - Industrial Acoustic Fault Diagnosis System",
+  "version": "2.0.0",
+  "release_date": "2026-10-31",
+  "organization": "MachineSense Diagnostics",
+  "models": {
+    "baseline_rf_fan": {
+      "artifact": "models/baseline_rf_fan.pkl",
+      "model_type": "RandomForestClassifier",
+      "task": "Stage 1 Fan Binary Acoustic Filtering (normal vs anomaly)",
+      "dataset": "MIMII Dataset (Hitachi/DCASE 2020 Challenge)",
+      "split_strategy": "LeaveOneGroupOut (split across machine IDs id_00, id_02, id_04, id_06)",
+      "feature_version": 2,
+      "num_features": 11,
+      "target_sr": 16000
+    },
+    "cwru_cnn": {
+      "artifact": "models/cwru_cnn.h5",
+      "model_type": "TF/Keras 2D Convolutional Neural Network",
+      "task": "Bearing & Motor Multi-Class Mechanical Defect Classification",
+      "dataset": "Case Western Reserve University (CWRU) Bearing Data Center",
+      "classes": ["ball_defect", "inner_race", "normal", "outer_race"],
+      "split_strategy": "GroupShuffleSplit (grouped by source recording stem to prevent chunk leakage)",
+      "input_shape": [128, 128, 3],
+      "serialization": "include_optimizer=False (compact deployment)"
+    },
+    "advanced_cnn": {
+      "artifact": "models/advanced_cnn.h5",
+      "model_type": "TF/Keras 2D Convolutional Neural Network",
+      "task": "Stage 2 Fan Log-Mel Spectrogram Anomaly Recognition (Cascade Ensemble)",
+      "dataset": "MIMII Industrial Fan Spectrograms",
+      "classes": ["anomaly", "normal"],
+      "input_shape": [128, 128, 3]
+    }
+  },
+  "preprocessing_parameters": {
+    "sample_rate_hz": 16000,
+    "n_fft": 2048,
+    "hop_length": 512,
+    "n_mels": 128,
+    "fmax_hz": 8000,
+    "spectrogram_colormap": "magma",
+    "envelope_bandpass_hz": [2000.0, 6000.0],
+    "envelope_butterworth_order": 4
+  },
+  "limitations_and_domain_boundaries": {
+    "cwru_domain_gap": "The CWRU bearing dataset was acquired using contact piezoelectric accelerometers directly mounted on the motor housing. In-field evaluation using non-contact air microphones involves acoustic attenuation, room reverberation, and ambient background noise. The bearing diagnostic model is marked experimental in production UI.",
+    "maximum_audio_duration_seconds": 30.0,
+    "maximum_upload_size_mb": 10.0
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "model_name": "advanced_cnn_fan",
+  "model_artifact": "advanced_cnn_fan.h5",
+  "dataset": "MIMII Industrial Fan Dataset (Hitachi / DCASE 2020 Challenge)",
+  "task": "Stage 2 Fan Binary Anomaly Detection (Spectrogram CNN)",
+  "classes": [
+    "anomaly",
+    "normal"
+  ],
+  "input_shape": [
+    128,
+    128,
+    3
+  ],
+  "evaluation_strategy": "Trained on all 4 machine IDs with balanced class weighting (3 epochs)",
+  "groups": [
+    "id_00",
+    "id_02",
+    "id_04",
+    "id_06"
+  ],
+  "total_samples": 5550,
+  "metrics": {
+    "accuracy": 0.9396396396396396,
+    "precision": 0.940361422216261,
+    "recall": 0.9396396396396396,
+    "f1_score": 0.9399255338734978
+  },
+  "accuracy_summary": "93.96%",
+  "confusion_matrix": [
+    [
+      1330,
+      145
+    ],
+    [
+      190,
+      3885
+    ]
+  ],
+  "overall_classification_report": {
+    "anomaly": {
+      "precision": 0.875,
+      "recall": 0.9016949152542373,
+      "f1-score": 0.8881469115191987,
+      "support": 1475.0
+    },
+    "normal": {
+      "precision": 0.9640198511166254,
+      "recall": 0.9533742331288344,
+      "f1-score": 0.958667489204195,
+      "support": 4075.0
+    },
+    "accuracy": 0.9396396396396396,
+    "macro avg": {
+      "precision": 0.9195099255583127,
+      "recall": 0.9275345741915358,
+      "f1-score": 0.9234072003616969,
+      "support": 5550.0
+    },
+    "weighted avg": {
+      "precision": 0.940361422216261,
+      "recall": 0.9396396396396396,
+      "f1-score": 0.9399255338734978,
+      "support": 5550.0
+    }
+  },
+  "epochs_trained": 3
+}

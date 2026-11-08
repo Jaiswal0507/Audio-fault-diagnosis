@@ -1,0 +1,177 @@
+{
+  "model_name": "baseline_rf_fan",
+  "model_artifact": "baseline_rf_fan.pkl",
+  "dataset": "MIMII Dataset (Hitachi/DCASE 2020 Challenge)",
+  "task": "Stage 1 Fan Binary Acoustic Filtering (normal vs anomaly)",
+  "feature_version": 2,
+  "features": [
+    "crest_factor",
+    "kurtosis",
+    "skewness",
+    "dominant_frequency",
+    "spectral_centroid",
+    "spectral_bandwidth",
+    "spectral_rolloff",
+    "spectral_flatness",
+    "envelope_kurtosis",
+    "envelope_spectrum_peak_hz",
+    "envelope_spectrum_peak_amp"
+  ],
+  "num_features": 11,
+  "classes": [
+    "anomaly",
+    "normal"
+  ],
+  "num_samples": 5550,
+  "evaluation_strategy": "LeaveOneGroupOut cross-validation across all machine IDs",
+  "groups": [
+    "id_00",
+    "id_02",
+    "id_04",
+    "id_06"
+  ],
+  "num_folds": 4,
+  "folds": [
+    {
+      "fold": 1,
+      "test_group": "id_00",
+      "train_samples": 4132,
+      "val_samples": 1418,
+      "accuracy": 0.3307475317348378,
+      "precision": 0.6342295230426824,
+      "recall": 0.3307475317348378,
+      "f1_score": 0.23936829777838964,
+      "confusion_matrix": [
+        [
+          88,
+          923
+        ],
+        [
+          26,
+          381
+        ]
+      ]
+    },
+    {
+      "fold": 2,
+      "test_group": "id_02",
+      "train_samples": 4175,
+      "val_samples": 1375,
+      "accuracy": 0.3090909090909091,
+      "precision": 0.6255994607801837,
+      "recall": 0.3090909090909091,
+      "f1_score": 0.232830148965204,
+      "confusion_matrix": [
+        [
+          98,
+          918
+        ],
+        [
+          32,
+          327
+        ]
+      ]
+    },
+    {
+      "fold": 3,
+      "test_group": "id_04",
+      "train_samples": 4169,
+      "val_samples": 1381,
+      "accuracy": 0.31860970311368575,
+      "precision": 0.5014544200081479,
+      "recall": 0.31860970311368575,
+      "f1_score": 0.33633827008004175,
+      "confusion_matrix": [
+        [
+          261,
+          772
+        ],
+        [
+          169,
+          179
+        ]
+      ]
+    },
+    {
+      "fold": 4,
+      "test_group": "id_06",
+      "train_samples": 4174,
+      "val_samples": 1376,
+      "accuracy": 0.3539244186046512,
+      "precision": 0.5444906358268825,
+      "recall": 0.3539244186046512,
+      "f1_score": 0.3625081583656641,
+      "confusion_matrix": [
+        [
+          264,
+          751
+        ],
+        [
+          138,
+          223
+        ]
+      ]
+    }
+  ],
+  "mean_metrics": {
+    "mean_accuracy": 0.32809314063602096,
+    "std_accuracy": 0.016772903032362937,
+    "mean_precision": 0.5764435099144741,
+    "std_precision": 0.055677375535764254,
+    "mean_recall": 0.32809314063602096,
+    "std_recall": 0.016772903032362937,
+    "mean_f1": 0.29276121879732486,
+    "std_f1": 0.05745896823778448
+  },
+  "accuracy_summary": "32.81% \u00b1 1.68%",
+  "confusion_matrix": [
+    [
+      711,
+      3364
+    ],
+    [
+      365,
+      1110
+    ]
+  ],
+  "feature_importances": {
+    "dominant_frequency": 0.2590858973322841,
+    "skewness": 0.11039059766534697,
+    "spectral_rolloff": 0.10266230224776818,
+    "spectral_centroid": 0.10158977498304843,
+    "spectral_flatness": 0.09987956816955841,
+    "envelope_spectrum_peak_hz": 0.07886409011219027,
+    "kurtosis": 0.06660657531984723,
+    "envelope_spectrum_peak_amp": 0.06393112335695296,
+    "spectral_bandwidth": 0.05615184360632741,
+    "crest_factor": 0.035432472011900015,
+    "envelope_kurtosis": 0.025405755194776128
+  },
+  "overall_classification_report": {
+    "normal": {
+      "precision": 0.2481001341081806,
+      "recall": 0.752542372881356,
+      "f1-score": 0.37317196167423095,
+      "support": 1475.0
+    },
+    "anomaly": {
+      "precision": 0.6607806691449815,
+      "recall": 0.17447852760736196,
+      "f1-score": 0.27606290040768783,
+      "support": 4075.0
+    },
+    "accuracy": 0.3281081081081081,
+    "macro avg": {
+      "precision": 0.45444040162658106,
+      "recall": 0.46351045024435894,
+      "f1-score": 0.3246174310409594,
+      "support": 5550.0
+    },
+    "weighted avg": {
+      "precision": 0.5511043107343001,
+      "recall": 0.3281081081081081,
+      "f1-score": 0.30187116443798534,
+      "support": 5550.0
+    }
+  }
+}
