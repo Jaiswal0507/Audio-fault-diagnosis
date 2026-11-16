@@ -1,0 +1,15 @@
+{
+  "include": [
+    "."
+  ],
+  "extraPaths": [
+    ".",
+    "backend"
+  ],
+  "venvPath": ".",
+  "venv": "venv",
+  "reportGeneralTypeIssues": "none",
+  "reportOptionalMemberAccess": "none",
+  "reportAttributeAccessIssue": "none",
+  "reportArgumentType": "none"
+}
